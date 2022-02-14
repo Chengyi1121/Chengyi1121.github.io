@@ -1,0 +1,716 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="计网 1.概述1.性能指标 速率 带宽 吞吐量 时延 传输时延 &#x2F; 发送时延 传播时延 排队时延 处理时延   时延带宽积 往返时间RTT 利用率 信道利用率 网络利用率    2.分层结构的元素 实体：某一层的活动元素，同一层的实体叫对等实体  协议：对等实体间进行数据交换制定的规则，包括：  语法 语义 时序 &#x2F; 同步   接口：层层之间还有一层接口，是上层使用下层服务的入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="计网 1.概述1.性能指标 速率 带宽 吞吐量 时延 传输时延 &#x2F; 发送时延 传播时延 排队时延 处理时延   时延带宽积 往返时间RTT 利用率 信道利用率 网络利用率    2.分层结构的元素 实体：某一层的活动元素，同一层的实体叫对等实体  协议：对等实体间进行数据交换制定的规则，包括：  语法 语义 时序 &#x2F; 同步   接口：层层之间还有一层接口，是上层使用下层服务的入">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220128161115359.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130095908613.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100154087.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100308960.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173207400.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173650920.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173830468.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173843015.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174255181.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174302733.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174849899.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174858911.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180434222.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180441467.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131182344549.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131183011631.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184129161.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184329262.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184915419.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131185918907.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190505122.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190720267.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194222033.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194712214.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131195135629.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131202431114.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131203205867.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220201150714322.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220214130405104.png">
+<meta property="article:published_time" content="2022-02-14T05:05:38.346Z">
+<meta property="article:modified_time" content="2022-02-14T05:06:09.633Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220128161115359.png">
+  
+  
+  <title>计算机网络 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机网络">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-14 13:05" pubdate>
+        February 14, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机网络</h1>
+            
+            <div class="markdown-body">
+              <p>计网</p>
+<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><h2 id="1-性能指标"><a href="#1-性能指标" class="headerlink" title="1.性能指标"></a>1.性能指标</h2><ul>
+<li>速率</li>
+<li>带宽</li>
+<li>吞吐量</li>
+<li>时延<ul>
+<li>传输时延 &#x2F; 发送时延</li>
+<li>传播时延</li>
+<li>排队时延</li>
+<li>处理时延</li>
+</ul>
+</li>
+<li>时延带宽积</li>
+<li>往返时间RTT</li>
+<li>利用率<ul>
+<li>信道利用率</li>
+<li>网络利用率</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-分层结构的元素"><a href="#2-分层结构的元素" class="headerlink" title="2.分层结构的元素"></a>2.分层结构的元素</h2><ol>
+<li><p>实体：某一层的活动元素，同一层的实体叫对等实体</p>
+</li>
+<li><p>协议：对等实体间进行数据交换制定的规则，包括：</p>
+<ul>
+<li>语法</li>
+<li>语义</li>
+<li>时序 &#x2F; 同步</li>
+</ul>
+</li>
+<li><p>接口：层层之间还有一层接口，是上层使用下层服务的入口</p>
+</li>
+<li><p>服务：下层中某些功能提供给上层调用</p>
+</li>
+<li><p>PCI + SDU &#x3D; PDU</p>
+<ul>
+<li>PCI： 协议控制信息</li>
+<li>SDU：服务数据单元</li>
+<li>PDU：协议数据单元（最终层间传输的单元）</li>
+</ul>
+<p>以n层为例，n层接受到n + 1传下来的PDU，作为本层的SDU，然后n层进行打包，加上协议信息PCI，打包为PDU，发给n - 1层作为它的SDU</p>
+</li>
+</ol>
+<h2 id="3-OSI"><a href="#3-OSI" class="headerlink" title="3.OSI"></a>3.OSI</h2><p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220128161115359.png" srcset="/img/loading.gif" lazyload alt="image-20220128161115359"></p>
+<ul>
+<li><p>应用层：用户的页面</p>
+</li>
+<li><p>表示层：数据格式的转换，数据加密，数据的压缩及恢复</p>
+</li>
+<li><p>会话层：</p>
+<ul>
+<li>实体间建立连接及有序传输数据</li>
+<li>使用校验点，在通信失效的时候从校验点重新开始</li>
+</ul>
+</li>
+<li><p>传输层</p>
+<ul>
+<li>可靠 &#x2F; 不可靠传输</li>
+<li>差错控制</li>
+<li>流量控制</li>
+<li>复用<ul>
+<li>多个应用层进程可同时使用传输层的服务 – 复用</li>
+<li>传输层会接收到所有进程的消息，然后分别发给对应的进程 – 分用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>网络层：数据包 &#x2F; 分组</p>
+<ul>
+<li>路由选择</li>
+<li>流量控制</li>
+<li>拥塞控制</li>
+<li>差错控制</li>
+</ul>
+</li>
+<li><p>数据链路层：数据帧</p>
+<ul>
+<li>封装数据帧</li>
+<li>差错控制：位错 &#x2F; 帧错</li>
+<li>流量控制</li>
+<li>接入控制：控制对信道的访问</li>
+</ul>
+</li>
+<li><p>物理层：比特流，透明传输：无论收到什么样的数据帧，都能作为比特流，然后转化成电信号在介质中传播</p>
+<ul>
+<li>定义接口特性：比如接口有多少根引脚</li>
+<li>定义传输模式：单工，半双工，双工</li>
+<li>定义传输速率</li>
+<li>比特同步</li>
+<li>比特编码：曼彻斯特编码等等</li>
+</ul>
+</li>
+</ul>
+<p>​    上四层是e2e通信（进程），下三层是p2p通信（结点）</p>
+<h2 id="4-TCP-x2F-IP-模型"><a href="#4-TCP-x2F-IP-模型" class="headerlink" title="4.TCP &#x2F; IP 模型"></a>4.TCP &#x2F; IP 模型</h2><ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网际层</li>
+<li>网络接口层</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130095908613.png" srcset="/img/loading.gif" lazyload alt="image-20220130095908613"></p>
+<h2 id="5-5层参考模型"><a href="#5-5层参考模型" class="headerlink" title="5.5层参考模型"></a>5.5层参考模型</h2><p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100154087.png" srcset="/img/loading.gif" lazyload alt="image-20220130100154087"></p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100308960.png" srcset="/img/loading.gif" lazyload alt="image-20220130100308960"></p>
+<h1 id="2-物理层（傻瓜层）"><a href="#2-物理层（傻瓜层）" class="headerlink" title="2.物理层（傻瓜层）"></a>2.物理层（傻瓜层）</h1><p>​    了解上层基础和下层建筑。</p>
+<p>​    物理层主要是确定传输介质接口的标准，而不是定义传输介质。</p>
+<p>​    有人将传输介质称作第零层，也有道理。</p>
+<h2 id="1-通信分类"><a href="#1-通信分类" class="headerlink" title="1.通信分类"></a>1.通信分类</h2><p>​    通信模型：信源 – 调制解调器（发送，调制） – 信道 – 调制解调器（接收，解调） – 信宿</p>
+<h3 id="1-通信方式"><a href="#1-通信方式" class="headerlink" title="1.通信方式"></a>1.通信方式</h3><ul>
+<li>单工 – 广播</li>
+<li>半双工 – 对讲机</li>
+<li>双工 – 电话</li>
+</ul>
+<p>​    明确的是，信道是有方向的，可以看作是矢量。</p>
+<h3 id="2-传输方式"><a href="#2-传输方式" class="headerlink" title="2.传输方式"></a>2.传输方式</h3><ul>
+<li>串行传输：一条信道，一个byte的8个bit由低到高依次发送<ul>
+<li>特性：速度低，费用低，适合远距离</li>
+</ul>
+</li>
+<li>并行传输：八条信道，每个信道传输一位<ul>
+<li>特性：速度高，费用高，适合近距离</li>
+<li>例子：计算机内部部件的信息传输</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-同步方式"><a href="#3-同步方式" class="headerlink" title="3.同步方式"></a>3.同步方式</h3><ul>
+<li>同步：同步传输时，数据是以数据区块作为一个整体发送的，数据区块前面要加上同步字符SYN，作为收发端之间的同步时钟。</li>
+<li>异步：将数据比特分为几个比特组，然后发送方会在传送数据之前给比特组加上起始位和终止位，发送端可以在任意时刻发送数据。</li>
+</ul>
+<p>​    同步和异步最终都是为了对收发的数据进行同步，最终得到完整不失真的数据。</p>
+<p>​    同步的话，收发必须进行严格的校准，当接收方没接收到时，发送方不能继续发。而异步，发送方直接发就行了，不用关心接收方接收到没有。</p>
+<p>​    类似于QQ的在线传文件和发送离线文件</p>
+<h2 id="2-数字通信性能指标"><a href="#2-数字通信性能指标" class="headerlink" title="2.数字通信性能指标"></a>2.数字通信性能指标</h2><h3 id="1-码元"><a href="#1-码元" class="headerlink" title="1.码元"></a>1.码元</h3><p>​    一个码元可以携带多个比特信息。</p>
+<p>​    码元是通过一定固定时长的信号波形来代表不同离散数值（0 &#x2F; 1）的基本波形。</p>
+<p>​    二进制码元可以携带 0 &#x2F; 1，所以可以携带一个bit。</p>
+<p>​    四进制码元，可以携带四个状态，00 &#x2F; 01 &#x2F; 10 &#x2F; 11，所以可以携带2bits</p>
+<p>​    16进制码元，携带4bits</p>
+<p>​    M进制码元，可以携带log2M个bits</p>
+<h3 id="2-码元速率"><a href="#2-码元速率" class="headerlink" title="2.码元速率"></a>2.码元速率</h3><p>​    单位时间发送码元个数，单位是bote，Baud，B</p>
+<h3 id="3-信息速率"><a href="#3-信息速率" class="headerlink" title="3.信息速率"></a>3.信息速率</h3><p>​    别名比特速率，比特率，表示单位时间传输的二进制码元的个数，单位bit&#x2F;s</p>
+<h3 id="4-带宽"><a href="#4-带宽" class="headerlink" title="4.带宽"></a>4.带宽</h3><p>​    模拟带宽：高频与低频之间的差值，界限是功率为最大功率的一半</p>
+<p>​    数字带宽：一点到另一点能通过的最高数据率，单位bps，b &#x2F; s</p>
+<h2 id="3-奈氏准则-amp-amp-香农定理"><a href="#3-奈氏准则-amp-amp-香农定理" class="headerlink" title="3.奈氏准则 &amp;&amp; 香农定理"></a>3.奈氏准则 &amp;&amp; 香农定理</h2><p>​    信噪比：信噪比（db） &#x3D; 10log10（S&#x2F;N），S是信道平均功率，N是信道内噪声功率</p>
+<ul>
+<li>奈：理想低通情况下（无噪声），为避免码间串扰，码元极限传输速率是2W baud，W是信道带宽，单位hz</li>
+<li>香：带宽受限且有噪声情况下，信息速率有上限，值为：Wlog2（1 + S&#x2F;N）</li>
+</ul>
+<p>​    奈奎斯特是在理想情况，无噪声的时候使用。香农则是在有噪声的时候使用。</p>
+<h2 id="4-编码-amp-amp-调制"><a href="#4-编码-amp-amp-调制" class="headerlink" title="4.编码 &amp;&amp; 调制"></a>4.编码 &amp;&amp; 调制</h2><p>​    基带信号 &amp; 宽带信号</p>
+<p>​    基带信号是直接将0101这种原始数字信号进行传输，传输信道是数字信道。</p>
+<p>​    宽带信号是将基带信号进行调制后，再频分复用的信号，传输信道是模拟信道。</p>
+<p>​    距离较近时使用基带信号传输，这样衰减小；距离较远的时候，就是使用宽带信号传输。</p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173207400.png" srcset="/img/loading.gif" lazyload alt="image-20220131173207400"></p>
+<h3 id="1-数字数据-–-数字信号"><a href="#1-数字数据-–-数字信号" class="headerlink" title="1.数字数据 – 数字信号"></a>1.数字数据 – 数字信号</h3><ul>
+<li><p>非归零编码（NRZ）：高1低0</p>
+<ul>
+<li>缺点：无开始结束，接收方无法判断，所以不好同步</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173650920.png" srcset="/img/loading.gif" lazyload alt="image-20220131173650920"></p>
+</li>
+<li><p>归零编码（RZ）：在一个码元内需要归零。</p>
+<ul>
+<li>缺点：信道利用率低，0太多了，并且同步没解决</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173830468.png" srcset="/img/loading.gif" lazyload alt="image-20220131173830468"></p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173843015.png" srcset="/img/loading.gif" lazyload alt="image-20220131173843015"></p>
+</li>
+<li><p>反向不归零编码（NRZI）：电平反转0，反之1</p>
+<ul>
+<li>缺点：数据全1的话，无法判断</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174255181.png" srcset="/img/loading.gif" lazyload alt="image-20220131174255181"></p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174302733.png" srcset="/img/loading.gif" lazyload alt="image-20220131174302733"></p>
+</li>
+<li><p>曼彻斯特编码：将码元分成两部分，前高后低表示1，前低后高表示0，也可以反过来。</p>
+<ul>
+<li>缺点：数据传输速度是调制速率的二分之一</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174849899.png" srcset="/img/loading.gif" lazyload alt="image-20220131174849899"></p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174858911.png" srcset="/img/loading.gif" lazyload alt="image-20220131174858911"></p>
+</li>
+<li><p>差分曼彻斯特编码：若码元为1，则前半个码元脉冲，与前一个码元的后半脉冲相同。反之相反</p>
+<ul>
+<li>优点：抗干扰能力优于曼彻斯特编码。</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180434222.png" srcset="/img/loading.gif" lazyload alt="image-20220131180434222"></p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180441467.png" srcset="/img/loading.gif" lazyload alt="image-20220131180441467"></p>
+</li>
+<li><p>4B &#x2F; 5B编码：编码效率百分之80</p>
+</li>
+</ul>
+<h3 id="2-数字数据-–-模拟信号"><a href="#2-数字数据-–-模拟信号" class="headerlink" title="2.数字数据 – 模拟信号"></a>2.数字数据 – 模拟信号</h3><p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131182344549.png" srcset="/img/loading.gif" lazyload alt="image-20220131182344549"></p>
+<h3 id="3-模拟信号–-数字信号"><a href="#3-模拟信号–-数字信号" class="headerlink" title="3.模拟信号– 数字信号"></a>3.模拟信号– 数字信号</h3><p>​    采样 – 量化 – 编码</p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131183011631.png" srcset="/img/loading.gif" lazyload alt="image-20220131183011631"></p>
+<h3 id="4-模拟数据-–-模拟信号"><a href="#4-模拟数据-–-模拟信号" class="headerlink" title="4.模拟数据 – 模拟信号"></a>4.模拟数据 – 模拟信号</h3><p>​    低频 – 高频，采用频分复用</p>
+<h2 id="5-数据交换方式"><a href="#5-数据交换方式" class="headerlink" title="5.数据交换方式"></a>5.数据交换方式</h2><p>​    局域网交换机，广域网路由器。</p>
+<p>​    <img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184129161.png" srcset="/img/loading.gif" lazyload alt="image-20220131184129161"></p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184329262.png" srcset="/img/loading.gif" lazyload alt="image-20220131184329262"></p>
+<h3 id="1-电路交换"><a href="#1-电路交换" class="headerlink" title="1.电路交换"></a>1.电路交换</h3><p>​    用一条物理线路直接连接俩条通信设备，线路占有率为100%，连接始终open</p>
+<p>​    具体步骤：建立连接（呼叫） – 通信 – 释放电路（拆除）</p>
+<p>​    通信是全双工的</p>
+<p>​    适用于大量的数据传输</p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184915419.png" srcset="/img/loading.gif" lazyload alt="image-20220131184915419"></p>
+<h3 id="2-报文交换"><a href="#2-报文交换" class="headerlink" title="2.报文交换"></a>2.报文交换</h3><p>​    不需要在两个结点之间专门建立一条线路，单位是报文，采用的方式是：存储转发</p>
+<ul>
+<li>优点：存储转发，不独占资源，存储后交换设备会对报文进行检查查看是否出错</li>
+<li>缺点：共享带宽</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131185918907.png" srcset="/img/loading.gif" lazyload alt="image-20220131185918907"></p>
+<h3 id="3-分组交换"><a href="#3-分组交换" class="headerlink" title="3.分组交换"></a>3.分组交换</h3><p>​    与报文交换略有不同，传输单位是分组。源节点把数据发送过来后，交换设备会将数据切分成一个个的小分组。</p>
+<p>​    一般每个分组的大小是128B</p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190505122.png" srcset="/img/loading.gif" lazyload alt="image-20220131190505122"></p>
+<h4 id="1-数据包交换"><a href="#1-数据包交换" class="headerlink" title="1.数据包交换"></a>1.数据包交换</h4><h4 id="2-虚电路交换"><a href="#2-虚电路交换" class="headerlink" title="2.虚电路交换"></a>2.虚电路交换</h4><h3 id="4-如何选择"><a href="#4-如何选择" class="headerlink" title="4.如何选择"></a>4.如何选择</h3><p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190720267.png" srcset="/img/loading.gif" lazyload alt="image-20220131190720267"></p>
+<h2 id="6-物理层传输媒介"><a href="#6-物理层传输媒介" class="headerlink" title="6.物理层传输媒介"></a>6.物理层传输媒介</h2><ul>
+<li><p>导向性传输介质 – 电磁波沿着固体介质传播</p>
+<ul>
+<li><p>双绞线 – 便宜</p>
+</li>
+<li><p>同轴电缆 – 优于双绞线</p>
+</li>
+<li><p>光纤 – 带宽大，损耗低，传输距离远</p>
+<ul>
+<li>单模光纤 – 远距离</li>
+<li>多模光纤 – 近距离</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194222033.png" srcset="/img/loading.gif" lazyload alt="image-20220131194222033"></p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194712214.png" srcset="/img/loading.gif" lazyload alt="image-20220131194712214"></p>
+</li>
+<li><p>非导向性传输介质 – 空气，真空，海水等</p>
+<ul>
+<li>无线电波：所有方向</li>
+<li>微波：单一方向</li>
+<li>红外线，单一方向</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131195135629.png" srcset="/img/loading.gif" lazyload alt="image-20220131195135629"></p>
+<h2 id="7-物理层设备"><a href="#7-物理层设备" class="headerlink" title="7.物理层设备"></a>7.物理层设备</h2><h3 id="1-中继器"><a href="#1-中继器" class="headerlink" title="1.中继器"></a>1.中继器</h3><p>​    对中途损耗的信号进行再生和还原，对衰减的信号进行放大</p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131202431114.png" srcset="/img/loading.gif" lazyload alt="image-20220131202431114"></p>
+<h3 id="2-集线器（多口中继器）"><a href="#2-集线器（多口中继器）" class="headerlink" title="2.集线器（多口中继器）"></a>2.集线器（多口中继器）</h3><p>​    功能和集线器一样，但是有多个端口，也就是多播（广播形式）。</p>
+<p>​    集线器也是傻瓜设备，不仅不能存储数据，而且不支持并发，会有冲突。如果两个端口同时向一个端口发送数据，那么会失败，然后这两个端口会在随机时间后重试，知道不冲突为止</p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131203205867.png" srcset="/img/loading.gif" lazyload alt="image-20220131203205867"></p>
+<h1 id="3-数据链路层"><a href="#3-数据链路层" class="headerlink" title="3.数据链路层"></a>3.数据链路层</h1><p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220201150714322.png" srcset="/img/loading.gif" lazyload alt="image-20220201150714322"></p>
+<p>​    链路层的功能：</p>
+<ul>
+<li>给网络层提供服务：无确认无连接，有确认无连接，有确认有连接</li>
+<li>链路管理 –&gt; 连接的建立，维持，释放</li>
+<li>组帧</li>
+<li>流量控制</li>
+<li>差错控制 –&gt; 位错 &#x2F; 帧错</li>
+</ul>
+<h2 id="1-组帧-amp-透明传输"><a href="#1-组帧-amp-透明传输" class="headerlink" title="1.组帧 &amp; 透明传输"></a>1.组帧 &amp; 透明传输</h2><p>测试：</p>
+<p><img src="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220214130405104.png" srcset="/img/loading.gif" lazyload alt="image-20220214130405104"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络-自顶向下</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="hidden-mobile">操作系统</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
