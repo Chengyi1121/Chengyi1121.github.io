@@ -44,8 +44,13 @@
 <meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220213213547855.png">
 <meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220214152243194.png">
 <meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220214152418712.png">
-<meta property="article:published_time" content="2022-02-16T05:20:21.459Z">
-<meta property="article:modified_time" content="2022-02-16T05:20:21.460Z">
+<meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216135453421.png">
+<meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216135516015.png">
+<meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216160443781.png">
+<meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216135453421.png">
+<meta property="og:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216160744082.png">
+<meta property="article:published_time" content="2022-02-16T09:06:05.187Z">
+<meta property="article:modified_time" content="2022-02-16T09:06:05.188Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220212094555081.png">
@@ -207,7 +212,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-16 13:20" pubdate>
+      <time datetime="2022-02-16 17:06" pubdate>
         February 16, 2022 pm
       </time>
     </span>
@@ -218,7 +223,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.6k 字
+      5.7k 字
     </span>
   
 
@@ -227,7 +232,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39 分钟
+      48 分钟
     </span>
   
 
@@ -515,6 +520,75 @@
 <li>作业：除了进程的等待时间，还要算上作业在从外存加入内存前，在后备队列上等待高级调度（作业调度）的时间。</li>
 </ul>
 <h3 id="5-响应时间"><a href="#5-响应时间" class="headerlink" title="5.响应时间"></a>5.响应时间</h3><p>​    定义：用户从首次提交请求到首次得到响应的时间，算作一次响应时间。</p>
+<h2 id="9-调度算法（上）"><a href="#9-调度算法（上）" class="headerlink" title="9.调度算法（上）"></a>9.调度算法（上）</h2><p>​    调度算法学习思路：</p>
+<ul>
+<li>算法思想</li>
+<li>算法规划</li>
+<li>用于作业调度还是进程调度</li>
+<li>抢占式还是非抢占式</li>
+<li>优缺点</li>
+<li>是否导致饥饿（进程 &#x2F; 作业长时间得不到处理机）</li>
+</ul>
+<h3 id="1-先来先服务（FCFS）"><a href="#1-先来先服务（FCFS）" class="headerlink" title="1.先来先服务（FCFS）"></a>1.先来先服务（FCFS）</h3><h4 id="例子：求性能指标："><a href="#例子：求性能指标：" class="headerlink" title="例子：求性能指标："></a>例子：求性能指标：</h4><p><img src="/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216135453421.png" srcset="/img/loading.gif" lazyload alt="image-20220216135453421"></p>
+<p><img src="/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216135516015.png" srcset="/img/loading.gif" lazyload alt="image-20220216135516015"></p>
+<ul>
+<li>算法思想：公平的角度，排队服务</li>
+<li>算法规划：按照作业 &#x2F; 进程到达后备队列 &#x2F; 就绪队列的顺序依次服务</li>
+<li>用于作业调度还是进程调度：都可以，针对不同的队列即可</li>
+<li>抢占式还是非抢占式：一般用于非抢占式</li>
+<li>优缺点：对长作业友好，短作业不友好</li>
+<li>是否导致饥饿：不会，只要进程一直等待，总会轮到它的</li>
+</ul>
+<h3 id="2-短作业优先（SJF）"><a href="#2-短作业优先（SJF）" class="headerlink" title="2.短作业优先（SJF）"></a>2.短作业优先（SJF）</h3><ul>
+<li>算法思想：追求最少的平均等待，周转，带全周转时间</li>
+<li>算法规划：最短的作业&#x2F;进程优先得到处理机</li>
+<li>用于作业调度还是进程调度：都可以，用于进程调度时称为SPF</li>
+<li>抢占式还是非抢占式：一般是非抢占式，也有抢占式：最短剩余时间优先算法（SRTN）</li>
+<li>优缺点：优点时是最短的平均时间，缺点是不公平，对短作业友好</li>
+<li>是否导致饥饿：会，如果源源不断的来短作业进来，那么长作业一直得不到处理机，可能会饥饿甚至饿死</li>
+</ul>
+<h3 id="3-高响应比优先（HRRN）"><a href="#3-高响应比优先（HRRN）" class="headerlink" title="3.高响应比优先（HRRN）"></a>3.高响应比优先（HRRN）</h3><ul>
+<li>算法思想：综合考虑进程的等待时间与要求服务时间</li>
+<li>算法规划：引入响应比 &#x3D; （等待时间 + 要求服务时间）➗要求服务时间 &#x3D; 1 + 等待时间➗要求服务时间 &gt;&#x3D; 1。响应比越高，等待时间越长，优先级越高</li>
+<li>用于作业调度还是进程调度: 都可以</li>
+<li>抢占式还是非抢占式：非抢占式</li>
+<li>优缺点：短作业优先，等待时间长的优先</li>
+<li>是否导致饥饿：不会</li>
+</ul>
+<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><p><img src="/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216160443781.png" srcset="/img/loading.gif" lazyload alt="image-20220216160443781"></p>
+<p>​    然后可能考计算题，结合性能指标计算或者是考选择概念题。</p>
+<p>​    就是下面这个图，计算它的周转时间，带权周转时间，等待时间，以及平均值</p>
+<p>​    <img src="/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216135453421.png" srcset="/img/loading.gif" lazyload alt="image-20220216135453421"></p>
+<p>公式如下：</p>
+<p><img src="/2022/02/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20220216160744082.png" srcset="/img/loading.gif" lazyload alt="image-20220216160744082"></p>
+<h2 id="10-调度算法（下）"><a href="#10-调度算法（下）" class="headerlink" title="10.调度算法（下）"></a>10.调度算法（下）</h2><h3 id="1-时间片轮转调度算法（RR）"><a href="#1-时间片轮转调度算法（RR）" class="headerlink" title="1.时间片轮转调度算法（RR）"></a>1.时间片轮转调度算法（RR）</h3><ul>
+<li>算法思想：公平的轮流为每个进程服务，每个进程在一定时间内都能得到响应</li>
+<li>算法规划：按照进程在就绪队列中的次序，选出一个进程，服务100ms，然后归还到就绪队列的队尾</li>
+<li>用于作业调度还是进程调度：进程调度</li>
+<li>抢占式还是非抢占式：抢占式</li>
+<li>优缺点：公平，适合于分时操作系统。缺点与时间片的选择有关，然后不会区分任务的紧急程度。<ul>
+<li>时间片大：退化成先来先服务调度算法</li>
+<li>时间片小：频繁的切换进程，降低性能了</li>
+</ul>
+</li>
+<li>是否导致饥饿：否</li>
+</ul>
+<h3 id="2-优先级调度算法"><a href="#2-优先级调度算法" class="headerlink" title="2.优先级调度算法"></a>2.优先级调度算法</h3><ul>
+<li>算法思想：</li>
+<li>算法规划：</li>
+<li>用于作业调度还是进程调度：</li>
+<li>抢占式还是非抢占式：</li>
+<li>优缺点：</li>
+<li>是否导致饥饿：</li>
+</ul>
+<h3 id="3-多级反馈队列调度算法"><a href="#3-多级反馈队列调度算法" class="headerlink" title="3.多级反馈队列调度算法"></a>3.多级反馈队列调度算法</h3><ul>
+<li>算法思想：</li>
+<li>算法规划：</li>
+<li>用于作业调度还是进程调度：</li>
+<li>抢占式还是非抢占式：</li>
+<li>优缺点：</li>
+<li>是否导致饥饿：</li>
+</ul>
 
             </div>
             <hr>
@@ -535,9 +609,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                      <a href="/2022/02/16/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="hidden-mobile">rust-lang</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -545,8 +619,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/thymeleaf%E8%AF%AD%E6%B3%95/">
-                        <span class="hidden-mobile">thymeleaf语法</span>
+                      <a href="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="hidden-mobile">计算机网络</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
