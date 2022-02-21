@@ -310,7 +310,7 @@
 <p>以n层为例，n层接受到n + 1传下来的PDU，作为本层的SDU，然后n层进行打包，加上协议信息PCI，打包为PDU，发给n - 1层作为它的SDU</p>
 </li>
 </ol>
-<h2 id="3-OSI"><a href="#3-OSI" class="headerlink" title="3.OSI"></a>3.OSI</h2><p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220128161115359.png" srcset="/img/loading.gif" lazyload alt="image-20220128161115359"></p>
+<h2 id="3-OSI"><a href="#3-OSI" class="headerlink" title="3.OSI"></a>3.OSI</h2><p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220128161115359.png" alt="image-20220128161115359"></p>
 <ul>
 <li><p>应用层：用户的页面</p>
 </li>
@@ -367,9 +367,9 @@
 <li>网际层</li>
 <li>网络接口层</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130095908613.png" srcset="/img/loading.gif" lazyload alt="image-20220130095908613"></p>
-<h2 id="5-5层参考模型"><a href="#5-5层参考模型" class="headerlink" title="5.5层参考模型"></a>5.5层参考模型</h2><p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100154087.png" srcset="/img/loading.gif" lazyload alt="image-20220130100154087"></p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100308960.png" srcset="/img/loading.gif" lazyload alt="image-20220130100308960"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130095908613.png" alt="image-20220130095908613"></p>
+<h2 id="5-5层参考模型"><a href="#5-5层参考模型" class="headerlink" title="5.5层参考模型"></a>5.5层参考模型</h2><p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100154087.png" alt="image-20220130100154087"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220130100308960.png" alt="image-20220130100308960"></p>
 <h1 id="2-物理层（傻瓜层）"><a href="#2-物理层（傻瓜层）" class="headerlink" title="2.物理层（傻瓜层）"></a>2.物理层（傻瓜层）</h1><p>​    了解上层基础和下层建筑。</p>
 <p>​    物理层主要是确定传输介质接口的标准，而不是定义传输介质。</p>
 <p>​    有人将传输介质称作第零层，也有道理。</p>
@@ -418,67 +418,67 @@
 <p>​    基带信号是直接将0101这种原始数字信号进行传输，传输信道是数字信道。</p>
 <p>​    宽带信号是将基带信号进行调制后，再频分复用的信号，传输信道是模拟信道。</p>
 <p>​    距离较近时使用基带信号传输，这样衰减小；距离较远的时候，就是使用宽带信号传输。</p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173207400.png" srcset="/img/loading.gif" lazyload alt="image-20220131173207400"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173207400.png" alt="image-20220131173207400"></p>
 <h3 id="1-数字数据-–-数字信号"><a href="#1-数字数据-–-数字信号" class="headerlink" title="1.数字数据 – 数字信号"></a>1.数字数据 – 数字信号</h3><ul>
 <li><p>非归零编码（NRZ）：高1低0</p>
 <ul>
 <li>缺点：无开始结束，接收方无法判断，所以不好同步</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173650920.png" srcset="/img/loading.gif" lazyload alt="image-20220131173650920"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173650920.png" alt="image-20220131173650920"></p>
 </li>
 <li><p>归零编码（RZ）：在一个码元内需要归零。</p>
 <ul>
 <li>缺点：信道利用率低，0太多了，并且同步没解决</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173830468.png" srcset="/img/loading.gif" lazyload alt="image-20220131173830468"></p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173843015.png" srcset="/img/loading.gif" lazyload alt="image-20220131173843015"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173830468.png" alt="image-20220131173830468"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131173843015.png" alt="image-20220131173843015"></p>
 </li>
 <li><p>反向不归零编码（NRZI）：电平反转0，反之1</p>
 <ul>
 <li>缺点：数据全1的话，无法判断</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174255181.png" srcset="/img/loading.gif" lazyload alt="image-20220131174255181"></p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174302733.png" srcset="/img/loading.gif" lazyload alt="image-20220131174302733"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174255181.png" alt="image-20220131174255181"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174302733.png" alt="image-20220131174302733"></p>
 </li>
 <li><p>曼彻斯特编码：将码元分成两部分，前高后低表示1，前低后高表示0，也可以反过来。</p>
 <ul>
 <li>缺点：数据传输速度是调制速率的二分之一</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174849899.png" srcset="/img/loading.gif" lazyload alt="image-20220131174849899"></p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174858911.png" srcset="/img/loading.gif" lazyload alt="image-20220131174858911"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174849899.png" alt="image-20220131174849899"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131174858911.png" alt="image-20220131174858911"></p>
 </li>
 <li><p>差分曼彻斯特编码：若码元为1，则前半个码元脉冲，与前一个码元的后半脉冲相同。反之相反</p>
 <ul>
 <li>优点：抗干扰能力优于曼彻斯特编码。</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180434222.png" srcset="/img/loading.gif" lazyload alt="image-20220131180434222"></p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180441467.png" srcset="/img/loading.gif" lazyload alt="image-20220131180441467"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180434222.png" alt="image-20220131180434222"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131180441467.png" alt="image-20220131180441467"></p>
 </li>
 <li><p>4B &#x2F; 5B编码：编码效率百分之80</p>
 </li>
 </ul>
-<h3 id="2-数字数据-–-模拟信号"><a href="#2-数字数据-–-模拟信号" class="headerlink" title="2.数字数据 – 模拟信号"></a>2.数字数据 – 模拟信号</h3><p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131182344549.png" srcset="/img/loading.gif" lazyload alt="image-20220131182344549"></p>
+<h3 id="2-数字数据-–-模拟信号"><a href="#2-数字数据-–-模拟信号" class="headerlink" title="2.数字数据 – 模拟信号"></a>2.数字数据 – 模拟信号</h3><p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131182344549.png" alt="image-20220131182344549"></p>
 <h3 id="3-模拟信号–-数字信号"><a href="#3-模拟信号–-数字信号" class="headerlink" title="3.模拟信号– 数字信号"></a>3.模拟信号– 数字信号</h3><p>​    采样 – 量化 – 编码</p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131183011631.png" srcset="/img/loading.gif" lazyload alt="image-20220131183011631"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131183011631.png" alt="image-20220131183011631"></p>
 <h3 id="4-模拟数据-–-模拟信号"><a href="#4-模拟数据-–-模拟信号" class="headerlink" title="4.模拟数据 – 模拟信号"></a>4.模拟数据 – 模拟信号</h3><p>​    低频 – 高频，采用频分复用</p>
 <h2 id="5-数据交换方式"><a href="#5-数据交换方式" class="headerlink" title="5.数据交换方式"></a>5.数据交换方式</h2><p>​    局域网交换机，广域网路由器。</p>
-<p>​    <img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184129161.png" srcset="/img/loading.gif" lazyload alt="image-20220131184129161"></p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184329262.png" srcset="/img/loading.gif" lazyload alt="image-20220131184329262"></p>
+<p>​    <img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184129161.png" alt="image-20220131184129161"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184329262.png" alt="image-20220131184329262"></p>
 <h3 id="1-电路交换"><a href="#1-电路交换" class="headerlink" title="1.电路交换"></a>1.电路交换</h3><p>​    用一条物理线路直接连接俩条通信设备，线路占有率为100%，连接始终open</p>
 <p>​    具体步骤：建立连接（呼叫） – 通信 – 释放电路（拆除）</p>
 <p>​    通信是全双工的</p>
 <p>​    适用于大量的数据传输</p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184915419.png" srcset="/img/loading.gif" lazyload alt="image-20220131184915419"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131184915419.png" alt="image-20220131184915419"></p>
 <h3 id="2-报文交换"><a href="#2-报文交换" class="headerlink" title="2.报文交换"></a>2.报文交换</h3><p>​    不需要在两个结点之间专门建立一条线路，单位是报文，采用的方式是：存储转发</p>
 <ul>
 <li>优点：存储转发，不独占资源，存储后交换设备会对报文进行检查查看是否出错</li>
 <li>缺点：共享带宽</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131185918907.png" srcset="/img/loading.gif" lazyload alt="image-20220131185918907"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131185918907.png" alt="image-20220131185918907"></p>
 <h3 id="3-分组交换"><a href="#3-分组交换" class="headerlink" title="3.分组交换"></a>3.分组交换</h3><p>​    与报文交换略有不同，传输单位是分组。源节点把数据发送过来后，交换设备会将数据切分成一个个的小分组。</p>
 <p>​    一般每个分组的大小是128B</p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190505122.png" srcset="/img/loading.gif" lazyload alt="image-20220131190505122"></p>
-<h4 id="1-数据包交换"><a href="#1-数据包交换" class="headerlink" title="1.数据包交换"></a>1.数据包交换</h4><h4 id="2-虚电路交换"><a href="#2-虚电路交换" class="headerlink" title="2.虚电路交换"></a>2.虚电路交换</h4><h3 id="4-如何选择"><a href="#4-如何选择" class="headerlink" title="4.如何选择"></a>4.如何选择</h3><p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190720267.png" srcset="/img/loading.gif" lazyload alt="image-20220131190720267"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190505122.png" alt="image-20220131190505122"></p>
+<h4 id="1-数据包交换"><a href="#1-数据包交换" class="headerlink" title="1.数据包交换"></a>1.数据包交换</h4><h4 id="2-虚电路交换"><a href="#2-虚电路交换" class="headerlink" title="2.虚电路交换"></a>2.虚电路交换</h4><h3 id="4-如何选择"><a href="#4-如何选择" class="headerlink" title="4.如何选择"></a>4.如何选择</h3><p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131190720267.png" alt="image-20220131190720267"></p>
 <h2 id="6-物理层传输媒介"><a href="#6-物理层传输媒介" class="headerlink" title="6.物理层传输媒介"></a>6.物理层传输媒介</h2><ul>
 <li><p>导向性传输介质 – 电磁波沿着固体介质传播</p>
 <ul>
@@ -491,10 +491,10 @@
 <li>单模光纤 – 远距离</li>
 <li>多模光纤 – 近距离</li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194222033.png" srcset="/img/loading.gif" lazyload alt="image-20220131194222033"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194222033.png" alt="image-20220131194222033"></p>
 </li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194712214.png" srcset="/img/loading.gif" lazyload alt="image-20220131194712214"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131194712214.png" alt="image-20220131194712214"></p>
 </li>
 <li><p>非导向性传输介质 – 空气，真空，海水等</p>
 <ul>
@@ -504,13 +504,13 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131195135629.png" srcset="/img/loading.gif" lazyload alt="image-20220131195135629"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131195135629.png" alt="image-20220131195135629"></p>
 <h2 id="7-物理层设备"><a href="#7-物理层设备" class="headerlink" title="7.物理层设备"></a>7.物理层设备</h2><h3 id="1-中继器"><a href="#1-中继器" class="headerlink" title="1.中继器"></a>1.中继器</h3><p>​    对中途损耗的信号进行再生和还原，对衰减的信号进行放大</p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131202431114.png" srcset="/img/loading.gif" lazyload alt="image-20220131202431114"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131202431114.png" alt="image-20220131202431114"></p>
 <h3 id="2-集线器（多口中继器）"><a href="#2-集线器（多口中继器）" class="headerlink" title="2.集线器（多口中继器）"></a>2.集线器（多口中继器）</h3><p>​    功能和集线器一样，但是有多个端口，也就是多播（广播形式）。</p>
 <p>​    集线器也是傻瓜设备，不仅不能存储数据，而且不支持并发，会有冲突。如果两个端口同时向一个端口发送数据，那么会失败，然后这两个端口会在随机时间后重试，知道不冲突为止</p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131203205867.png" srcset="/img/loading.gif" lazyload alt="image-20220131203205867"></p>
-<h1 id="3-数据链路层"><a href="#3-数据链路层" class="headerlink" title="3.数据链路层"></a>3.数据链路层</h1><p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220201150714322.png" srcset="/img/loading.gif" lazyload alt="image-20220201150714322"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220131203205867.png" alt="image-20220131203205867"></p>
+<h1 id="3-数据链路层"><a href="#3-数据链路层" class="headerlink" title="3.数据链路层"></a>3.数据链路层</h1><p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220201150714322.png" alt="image-20220201150714322"></p>
 <p>​    链路层的功能：</p>
 <ul>
 <li>给网络层提供服务：无确认无连接，有确认无连接，有确认有连接</li>
@@ -520,7 +520,7 @@
 <li>差错控制 –&gt; 位错 &#x2F; 帧错</li>
 </ul>
 <h2 id="1-组帧-amp-透明传输"><a href="#1-组帧-amp-透明传输" class="headerlink" title="1.组帧 &amp; 透明传输"></a>1.组帧 &amp; 透明传输</h2><p>测试：</p>
-<p><img src="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220214130405104.png" srcset="/img/loading.gif" lazyload alt="image-20220214130405104"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220214130405104.png" alt="image-20220214130405104"></p>
 
             </div>
             <hr>
@@ -712,5 +712,11 @@
 <script  src="/js/boot.js" ></script>
 
 
-</body>
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 </html>

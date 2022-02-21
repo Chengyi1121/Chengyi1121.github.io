@@ -329,7 +329,7 @@
 <figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs delphi">welcome.<span class="hljs-keyword">message</span> = Welcome <span class="hljs-keyword">to</span> BeiJing!<br></code></pre></td></tr></table></figure>
 
 <p>在 IntelliJ IDEA 编辑视图：</p>
-<p><img src="https://raw.githubusercontent.com/fanlychie/mdimg/master/i18n-messages.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/images/loading.png" srcset="/img/loading.gif" lazyload data-original="https://raw.githubusercontent.com/fanlychie/mdimg/master/i18n-messages.png" alt="img"></p>
 <p><code>messages</code>是 Spring Boot 加载资源文件默认采用的名称（<code>basename</code>），如果你所使用的资源文件名称不是以<code>messages</code>命名或所使用的资源文件不是在<code>src/main/resources</code>根目录，你可以通过<code>spring.messages.basename</code>属性来做具体的配置。如，资源文件<code>messages.properties</code>和<code>messages_en_US.properties</code>假设它们所在的目录位置是<code>src/main/resources/i18n</code>。</p>
 <p>application.properties 配置示例：</p>
 <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel"><span class="hljs-keyword">spring</span>.messages.<span class="hljs-keyword">basename</span>:i18n/messages<br></code></pre></td></tr></table></figure>
@@ -966,5 +966,11 @@
 <script  src="/js/boot.js" ></script>
 
 
-</body>
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
 </html>
