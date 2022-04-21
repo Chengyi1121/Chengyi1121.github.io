@@ -1,0 +1,659 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="绪论1948年，香农发表了“A Mathematical Theory of Communication”（通信的数学理论），这是开始的地方。 信息的定义信息是消息和信号的具体内容和意义。信息是我们从我们接收到的消息或者信号中提炼出的内容。 信息的量值和其随机性有关：预估的可能性越小，随机性越大，信息量越大（如：国足夺得世界冠军，预估可能性很小，所以信息量很大）。 PS：对易混淆概念做区分：  消">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息论">
+<meta property="og:url" content="http://example.com/2022/04/20/information_theory/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="绪论1948年，香农发表了“A Mathematical Theory of Communication”（通信的数学理论），这是开始的地方。 信息的定义信息是消息和信号的具体内容和意义。信息是我们从我们接收到的消息或者信号中提炼出的内容。 信息的量值和其随机性有关：预估的可能性越小，随机性越大，信息量越大（如：国足夺得世界冠军，预估可能性很小，所以信息量很大）。 PS：对易混淆概念做区分：  消">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419163325253.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419163349636.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419185532840.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419195130749.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419200317029.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419200651523.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419200759739.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419201241699.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419202008790.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419202242558.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419202352630.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419202647222.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419202754058.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419202832932.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419202927189.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419205214556.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220419205259048.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420160849013.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420162050487.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420162457065.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420162723799.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420162831748.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420163457692.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420165955014.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420170014446.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420170027442.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420184016116.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420200659687.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420202537923.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420203620247.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420203837312.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420203933019.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420204052212.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420204239745.png">
+<meta property="og:image" content="http://example.com/2022/04/20/information_theory/image-20220420204253710.png">
+<meta property="article:published_time" content="2022-04-20T12:50:18.243Z">
+<meta property="article:modified_time" content="2022-04-20T12:50:18.244Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/04/20/information_theory/image-20220419163325253.png">
+  
+  
+  <title>信息论 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="信息论">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-20 20:50" pubdate>
+        April 20, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">信息论</h1>
+            
+            <div class="markdown-body">
+              <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p><strong>1948年</strong>，香农发表了“A Mathematical Theory of Communication”（通信的数学理论），这是开始的地方。</p>
+<h2 id="信息的定义"><a href="#信息的定义" class="headerlink" title="信息的定义"></a>信息的定义</h2><p>信息是<strong>消息和信号的具体内容和意义</strong>。信息是我们从我们接收到的消息或者信号中提炼出的内容。</p>
+<p>信息的量值和其随机性有关：预估的可能性越小，随机性越大，信息量越大（如：国足夺得世界冠军，预估可能性很小，所以信息量很大）。</p>
+<p>PS：对易混淆概念做区分：</p>
+<ul>
+<li>消息：用一些介质，如图像视频文字，将信息表示出来</li>
+<li>信号：通信时，把消息转换成电信号或者光信号。</li>
+<li>情报：是特殊领域的信息</li>
+<li>知识：高层次信息</li>
+</ul>
+<p>香农给出的信息的定义：信息是消除随机不确定性的东西，也就是信息是通信过程中随机不确定性的减少量。</p>
+<h2 id="信息论的研究内容"><a href="#信息论的研究内容" class="headerlink" title="信息论的研究内容"></a>信息论的研究内容</h2><ul>
+<li>信息压缩的极限：<strong>信息熵H</strong></li>
+<li>信息传输速率的极限：<strong>信道容量C</strong></li>
+</ul>
+<p>通信模型：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419163325253.png" alt="image-20220419163325253"></p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419163349636.png" alt="image-20220419163349636"></p>
+<p>下面是通信系统中的各个模块：</p>
+<h3 id="信源"><a href="#信源" class="headerlink" title="信源"></a>信源</h3><p>发送消息的事物，可分为：数字信源，模拟信源，有记忆信源，无记忆信源。</p>
+<h3 id="信道"><a href="#信道" class="headerlink" title="信道"></a>信道</h3><p>传输信息的通道。</p>
+<h3 id="信宿"><a href="#信宿" class="headerlink" title="信宿"></a>信宿</h3><p>信息传送的终点</p>
+<h3 id="信源编码"><a href="#信源编码" class="headerlink" title="信源编码"></a>信源编码</h3><p>一种变换，去冗余，增加信息的有效性。</p>
+<p>信源译码：信源编码的逆过程。</p>
+<h3 id="信道编码"><a href="#信道编码" class="headerlink" title="信道编码"></a>信道编码</h3><p>一种变换，增加冗余，提高信息传送的可靠性。</p>
+<p>信道译码：不单单是信道编码的逆变换，根据信道的噪声特性而定。</p>
+<h3 id="核心问题"><a href="#核心问题" class="headerlink" title="核心问题"></a>核心问题</h3><ul>
+<li><strong>信源编码：减少冗余——数据压缩——有效性</strong></li>
+<li><strong>信道编码：增加冗余——纠错编码——可靠性</strong></li>
+</ul>
+<h1 id="信源与熵"><a href="#信源与熵" class="headerlink" title="信源与熵"></a>信源与熵</h1><h2 id="信息与信源的关系"><a href="#信息与信源的关系" class="headerlink" title="信息与信源的关系"></a>信息与信源的关系</h2><h3 id="信源定义"><a href="#信源定义" class="headerlink" title="信源定义"></a>信源定义</h3><p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419185532840.png" alt="image-20220419185532840"></p>
+<p>信源发出的是消息，是从一个基本消息集和中取出一个或多个基本消息的过程。其中取出一个基本消息发出的消息为一个符号，多个则为符号序列。</p>
+<p>信源每次发出的信息都可以通过一个具体的随机变量表示，所以，我们可以<strong>构建一簇具体的随机变量集合</strong>，来表示信源。</p>
+<p>信源的数学形式如下：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419195130749.png" alt="image-20220419195130749"></p>
+<p>定义：</p>
+<ul>
+<li>参数集T：随机变量序列</li>
+<li>值域Ex：如上</li>
+</ul>
+<p>于是，我们可以根据<strong>参数集T</strong>和<strong>值域Ex</strong>对信源做一个分类：</p>
+<ul>
+<li>离散信源：T离散 - Ex离散</li>
+<li>连续信源：T离散 - Ex连续</li>
+<li>波形信源：T连续 - Ex连续</li>
+</ul>
+<p>另一方面，根据信源输出的随机变量序列T的统计关联性还可以分：</p>
+<ul>
+<li>有记忆信源：T中的随机变量是统计相关的</li>
+<li>平稳信源：与时间的推移无关</li>
+<li>无记忆信源：相互独立的随机变量</li>
+</ul>
+<p>PS：相同的Ex（值域），同Ex，同分布，&#x3D;&gt;独立同分布信源</p>
+<h3 id="离散无记忆信源"><a href="#离散无记忆信源" class="headerlink" title="离散无记忆信源"></a>离散无记忆信源</h3><p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419200317029.png" alt="image-20220419200317029"></p>
+<p>Discrete Memoryless Source，离散无记忆信源。</p>
+<p>它的T（随机变量序列，参数集）是：独立同分布随机变量序列。</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419200651523.png" alt="image-20220419200651523"></p>
+<h3 id="非理想观察模型"><a href="#非理想观察模型" class="headerlink" title="非理想观察模型"></a>非理想观察模型</h3><p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419200759739.png" alt="image-20220419200759739"></p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419201241699.png" alt="image-20220419201241699"></p>
+<p>从上得出：传递的某个信息&#x3D;先验不确定性-后验不确定性</p>
+<h2 id="香农熵及其特性"><a href="#香农熵及其特性" class="headerlink" title="香农熵及其特性"></a>香农熵及其特性</h2><p>从上一节信息是不确定性的减小，<strong>想要去度量信息，可以去度量不确定性</strong>得到。</p>
+<p>未经统计平均的不确定性有：</p>
+<ul>
+<li><strong>自信息量</strong></li>
+<li><strong>条件自信息量</strong></li>
+<li><strong>联合自信息量</strong></li>
+</ul>
+<p>统计意义下的平均不确定性有：</p>
+<ul>
+<li><strong>熵</strong></li>
+<li><strong>条件熵</strong></li>
+<li><strong>联合熵</strong></li>
+</ul>
+<p>下面是不确定性的度量方法：</p>
+<p>自信息量（不确定性）-&gt;互信息量</p>
+<p>熵（平均不确定性）-&gt;平均互信息量</p>
+<h3 id="自信息量"><a href="#自信息量" class="headerlink" title="自信息量"></a>自信息量</h3><h4 id="自信息量-1"><a href="#自信息量-1" class="headerlink" title="自信息量"></a>自信息量</h4><p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419202008790.png" alt="image-20220419202008790"></p>
+<p>自信息量的单位：</p>
+<table>
+<thead>
+<tr>
+<th>对数底</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>二进制单位，bit</td>
+</tr>
+<tr>
+<td>e</td>
+<td>自然单位，nat</td>
+</tr>
+<tr>
+<td>10</td>
+<td>十进制单位，dit（或Hart）</td>
+</tr>
+<tr>
+<td>正整数r</td>
+<td>r进制单位</td>
+</tr>
+</tbody></table>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419202242558.png" alt="image-20220419202242558"></p>
+<p>下面是一个例题：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419202352630.png" alt="image-20220419202352630"></p>
+<h4 id="联合自信息量"><a href="#联合自信息量" class="headerlink" title="联合自信息量"></a>联合自信息量</h4><p>我们上面讨论的，随机变量序列和值域都是单个随机变量的，下面则是有多个随机变量构成的，其信息量称为联合自信息量</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419202647222.png" alt="image-20220419202647222"></p>
+<p>其算法也是建立在自信息量的基础上的：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419202754058.png" alt="image-20220419202754058"></p>
+<p>当X，Y独立时，可以简化为：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419202832932.png" alt="image-20220419202832932"></p>
+<p>可以推广到多元：（三元符号的自信息量）</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419202927189.png" alt="image-20220419202927189"></p>
+<h4 id="条件自信息量"><a href="#条件自信息量" class="headerlink" title="条件自信息量"></a>条件自信息量</h4><p>条件自信息量是：观察过程中引入了干扰y，在干扰y下，得到的自信息量，称为条件自信息量，也就是<strong>下图中的后验不确定性</strong>。</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419205214556.png" alt="image-20220419205214556"></p>
+<p>下面是一个例子：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220419205259048.png" alt="image-20220419205259048"></p>
+<h4 id="自信息量的性质和相互关系"><a href="#自信息量的性质和相互关系" class="headerlink" title="自信息量的性质和相互关系"></a>自信息量的性质和相互关系</h4><p>我们上面了解了三个自信息量，分别是，自信息量，联合自信息量，条件自信息量，下面对他们进行归纳一下，包括计算及相关性质。</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420160849013.png" alt="image-20220420160849013"></p>
+<ul>
+<li>自信息量&#x2F;联合自信息量：先验概率</li>
+<li>条件自信息量：引入干扰后的后验概率</li>
+</ul>
+<p>性质：</p>
+<ul>
+<li>概率1时：必然事件，自信息量为0</li>
+<li>概率0时：不可能事件，计算自信息量得到的是正无穷，没有意义</li>
+<li>自信息量都是非负的</li>
+</ul>
+<p>PS：补充<strong>概率论公式</strong></p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420162050487.png" alt="image-20220420162050487"></p>
+<p>在这里表示的就是：联合概率&#x3D;先验概率*转移概率</p>
+<p>从计算上来说，先验，转移，后验<strong>三者知道其二就可以求另一个</strong>。</p>
+<p>由此推得<strong>自信息量的可加性</strong>：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420162457065.png" alt="image-20220420162457065"></p>
+<p>自信息量的可加性可推广至n维度：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420162723799.png" alt="image-20220420162723799"></p>
+<p>特殊情况下，当x，y独立时，公式简化成下面的形式：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420162831748.png" alt="image-20220420162831748"></p>
+<h3 id="互信息量"><a href="#互信息量" class="headerlink" title="互信息量"></a>互信息量</h3><h4 id="互信息量-1"><a href="#互信息量-1" class="headerlink" title="互信息量"></a>互信息量</h4><p>从y的观察视角下，得到的x的信息，就是先验不确定性和后验不确定性的差值，我们把这个值称为互信息量。记作<em>I(Xk; Yj)</em></p>
+<p>PS：互信息量就是不确定性的减少量。</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420163457692.png" alt="image-20220420163457692"></p>
+<p>PS：注意互信息量的写法</p>
+<p>若是后验概率为1，后验不确定性为0，根据上面的公式，可以计算出互信息量就是先验不确定性，这种情况，我们称其为：从y中得到了x的<strong>实在信息</strong>（也就是全部的信息）</p>
+<p>实在信息的意思就是：经过引入的干扰y后，我们再去观察x，就获得x的全部信息，x的后验概率就是1，后验不确定性自然就是0。（比如下面的例子，甲告诉了乙行号和列号，这样就相当于告诉了确定的坐标，概率就是1了，不确定性0。但在我们实际的计算中，往往更复杂，所以是先求得概率，再求不确定性，最后求得信息量）</p>
+<p>下面是互信息量的一个例题：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420165955014.png" alt="image-20220420165955014"></p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420170014446.png" alt="image-20220420170014446"></p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420170027442.png" alt="image-20220420170027442"></p>
+<h4 id="互信息量的性质"><a href="#互信息量的性质" class="headerlink" title="互信息量的性质"></a>互信息量的性质</h4><p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420184016116.png" alt="image-20220420184016116"></p>
+<h4 id="条件互信息量"><a href="#条件互信息量" class="headerlink" title="条件互信息量"></a>条件互信息量</h4><p>复杂了起来。。后面再说。。</p>
+<h3 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>熵就是<strong>平均不确定性</strong>，熵的计算就是均值的计算，如下</p>
+<table>
+<thead>
+<tr>
+<th>P1</th>
+<th>P2</th>
+<th>P3</th>
+<th>…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I(x1)</td>
+<td>I(x2)</td>
+<td>I(x3)</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p>公式：</p>
+<p><img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420200659687.png" alt="image-20220420200659687"></p>
+<p>说明：</p>
+<ul>
+<li>H(X)表示熵，并不是表示是自变量为X的函数</li>
+<li>熵函数的自变量是先验概率</li>
+<li>熵的单位和自信息量的单位一致</li>
+<li>规定0log0&#x3D;0</li>
+</ul>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>对称性：改变次序不会影响结果</li>
+<li>加入0概率事件不会影响熵</li>
+<li>非负性</li>
+<li>强可加性<img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420202537923.png" alt="image-20220420202537923"></li>
+<li>可加性（可加性是强可加性的特殊情况）<img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420203620247.png" alt="image-20220420203620247"></li>
+<li>渐化性<img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420203837312.png" alt="image-20220420203837312"></li>
+<li>凸状性（上凸函数）<img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420203933019.png" alt="image-20220420203933019"></li>
+<li>极值性（等概的时候取极值）<img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420204052212.png" alt="image-20220420204052212"></li>
+</ul>
+<h4 id="两个不等式"><a href="#两个不等式" class="headerlink" title="两个不等式"></a>两个不等式</h4><ul>
+<li>信息论不等式：<img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420204239745.png" alt="image-20220420204239745"></li>
+<li>香农不等式（当p&#x3D;q时取等）：<img src="/img/avatar.png" srcset="/img/loading.gif" lazyload data-original="/2022/04/20/information_theory/image-20220420204253710.png" alt="image-20220420204253710"></li>
+</ul>
+<h3 id="联合熵和条件熵"><a href="#联合熵和条件熵" class="headerlink" title="联合熵和条件熵"></a>联合熵和条件熵</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/19/co/">
+                        <span class="hidden-mobile">计算机组成原理</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>

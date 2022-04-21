@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1SpringBoot1 创建Spring Boot项目​    1.官网直接创建项目下载导入idea（Springboot initializr） ​    2.使用idea构建springboot项目，还是从官网创建，只不过idea提供了接口 2 springboot项目里的类，配置​    1.src&gt;main&gt;java&gt;com.example.deom&gt;DemoAp">
+    <meta name="description" content="1SpringBoot1 创建Spring Boot项目​	1.官网直接创建项目下载导入idea（Springboot initializr） ​	2.使用idea构建springboot项目，还是从官网创建，只不过idea提供了接口 2 springboot项目里的类，配置​	1.src&gt;main&gt;java&gt;com.example.deom&gt;DemoApplication">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot">
 <meta property="og:url" content="http://example.com/2022/02/16/SpringBoot/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1SpringBoot1 创建Spring Boot项目​    1.官网直接创建项目下载导入idea（Springboot initializr） ​    2.使用idea构建springboot项目，还是从官网创建，只不过idea提供了接口 2 springboot项目里的类，配置​    1.src&gt;main&gt;java&gt;com.example.deom&gt;DemoAp">
+<meta property="og:description" content="1SpringBoot1 创建Spring Boot项目​	1.官网直接创建项目下载导入idea（Springboot initializr） ​	2.使用idea构建springboot项目，还是从官网创建，只不过idea提供了接口 2 springboot项目里的类，配置​	1.src&gt;main&gt;java&gt;com.example.deom&gt;DemoApplication">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/02/16/SpringBoot/SpringBoot%5Cs.png">
 <meta property="og:image" content="http://example.com/2022/02/16/SpringBoot/image-20220216022025470.png">
@@ -73,7 +73,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
@@ -240,36 +240,36 @@
             <h1 style="display: none">SpringBoot</h1>
             
             <div class="markdown-body">
-              <h1 id="1SpringBoot"><a href="#1SpringBoot" class="headerlink" title="1SpringBoot"></a>1SpringBoot</h1><h2 id="1-创建Spring-Boot项目"><a href="#1-创建Spring-Boot项目" class="headerlink" title="1 创建Spring Boot项目"></a>1 创建Spring Boot项目</h2><p>​    1.官网直接创建项目下载导入idea（Springboot initializr）</p>
-<p>​    2.使用idea构建springboot项目，还是从官网创建，只不过idea提供了接口</p>
-<h2 id="2-springboot项目里的类，配置"><a href="#2-springboot项目里的类，配置" class="headerlink" title="2 springboot项目里的类，配置"></a>2 springboot项目里的类，配置</h2><p>​    1.src&gt;main&gt;java&gt;com.example.deom&gt;DemoApplication.java&gt;main方法：启动main方法，是项目的入口</p>
-<p>​    2.src&gt;main&gt;resourses&gt;application.properties：springboot的配置</p>
-<p>​        可以配置springboot占用的端口号，默认是8080，这里我修改成了8081</p>
+              <h1 id="1SpringBoot"><a href="#1SpringBoot" class="headerlink" title="1SpringBoot"></a>1SpringBoot</h1><h2 id="1-创建Spring-Boot项目"><a href="#1-创建Spring-Boot项目" class="headerlink" title="1 创建Spring Boot项目"></a>1 创建Spring Boot项目</h2><p>​	1.官网直接创建项目下载导入idea（Springboot initializr）</p>
+<p>​	2.使用idea构建springboot项目，还是从官网创建，只不过idea提供了接口</p>
+<h2 id="2-springboot项目里的类，配置"><a href="#2-springboot项目里的类，配置" class="headerlink" title="2 springboot项目里的类，配置"></a>2 springboot项目里的类，配置</h2><p>​	1.src&gt;main&gt;java&gt;com.example.deom&gt;DemoApplication.java&gt;main方法：启动main方法，是项目的入口</p>
+<p>​	2.src&gt;main&gt;resourses&gt;application.properties：springboot的配置</p>
+<p>​		可以配置springboot占用的端口号，默认是8080，这里我修改成了8081</p>
 <figure class="highlight elm"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs elm"><span class="hljs-title">server</span>.<span class="hljs-keyword">port</span>=8081<br></code></pre></td></tr></table></figure>
 
-<p>​    3.src&gt;test&gt;java&gt;com.example.demo&gt;DemoApplicationTests.java：测试类</p>
-<p>​    4.pom.xml文件，配置文件</p>
-<p>​    下面是spring-web依赖和spring-test依赖的代码</p>
+<p>​	3.src&gt;test&gt;java&gt;com.example.demo&gt;DemoApplicationTests.java：测试类</p>
+<p>​	4.pom.xml文件，配置文件</p>
+<p>​	下面是spring-web依赖和spring-test依赖的代码</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>​    5.修改banner</p>
-<p>​        在resource目录下创建一个banner.txt，拷贝进去已经创建好的banner即可</p>
-<h2 id="3-springboot项目建包"><a href="#3-springboot项目建包" class="headerlink" title="3  springboot项目建包"></a>3  springboot项目建包</h2><p>​    在Application.java的同级目录下建立package。如：controller，dao，pojo，service</p>
-<p>​    Application.java只会扫描同级目录下的包。</p>
-<h2 id="4-将项目导出idea"><a href="#4-将项目导出idea" class="headerlink" title="4 将项目导出idea"></a>4 将项目导出idea</h2><p>​    在idea右侧找到并打开Mevan，找到lifestyle里的package，双击package，将项目打包成jar文件，命令行中输入</p>
+<p>​	5.修改banner</p>
+<p>​		在resource目录下创建一个banner.txt，拷贝进去已经创建好的banner即可</p>
+<h2 id="3-springboot项目建包"><a href="#3-springboot项目建包" class="headerlink" title="3  springboot项目建包"></a>3  springboot项目建包</h2><p>​	在Application.java的同级目录下建立package。如：controller，dao，pojo，service</p>
+<p>​	Application.java只会扫描同级目录下的包。</p>
+<h2 id="4-将项目导出idea"><a href="#4-将项目导出idea" class="headerlink" title="4 将项目导出idea"></a>4 将项目导出idea</h2><p>​	在idea右侧找到并打开Mevan，找到lifestyle里的package，双击package，将项目打包成jar文件，命令行中输入</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">java </span>-<span class="hljs-keyword">jar </span><span class="hljs-keyword">jar的绝对路径</span><br></code></pre></td></tr></table></figure>
 
 <p>可运行项目</p>
-<h1 id="2-springboot自动装配原理"><a href="#2-springboot自动装配原理" class="headerlink" title="2 springboot自动装配原理"></a>2 springboot自动装配原理</h1><h2 id="1-spring-boot-starter-parent（xml中）"><a href="#1-spring-boot-starter-parent（xml中）" class="headerlink" title="1 spring-boot-starter-parent（xml中）"></a>1 spring-boot-starter-parent（xml中）</h2><p>​    核心依赖，在父工程中（例如java包版本）</p>
+<h1 id="2-springboot自动装配原理"><a href="#2-springboot自动装配原理" class="headerlink" title="2 springboot自动装配原理"></a>2 springboot自动装配原理</h1><h2 id="1-spring-boot-starter-parent（xml中）"><a href="#1-spring-boot-starter-parent（xml中）" class="headerlink" title="1 spring-boot-starter-parent（xml中）"></a>1 spring-boot-starter-parent（xml中）</h2><p>​	核心依赖，在父工程中（例如java包版本）</p>
 <h2 id="2-启动器（xml中）"><a href="#2-启动器（xml中）" class="headerlink" title="2 启动器（xml中）"></a>2 启动器<dependencies>（xml中）</dependencies></h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>​    启动器：就是SpringBoot的应用场景</p>
-<p>​    比如：spring-boot-starter-web，就会自动导入web环境的所有依赖</p>
-<p>​    springboot会将所有的应用场景都变成启动器</p>
-<p>​    要使用什么样的功能，就只需要找到对应的启动器即可 <code>starter</code></p>
-<p>​    可以在springboot的官网的doc文档中去找springboot的启动器</p>
+<p>​	启动器：就是SpringBoot的应用场景</p>
+<p>​	比如：spring-boot-starter-web，就会自动导入web环境的所有依赖</p>
+<p>​	springboot会将所有的应用场景都变成启动器</p>
+<p>​	要使用什么样的功能，就只需要找到对应的启动器即可 <code>starter</code></p>
+<p>​	可以在springboot的官网的doc文档中去找springboot的启动器</p>
 <h2 id="3-主程序（demoApplication-java中）"><a href="#3-主程序（demoApplication-java中）" class="headerlink" title="3 主程序（demoApplication.java中）"></a>3 主程序（demoApplication.java中）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.chengyi;<br><br><span class="hljs-keyword">import</span> org.springframework.boot.SpringApplication;<br><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;<br><span class="hljs-comment">//标注这个类是springboot的应用</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo1Application</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//静态方法启动springboot应用</span><br>        SpringApplication.run(Demo1Application.class, args);<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 <p>注解</p>
@@ -308,8 +308,8 @@
 <p><code>@Autowired</code>：将 Spring 容器中的 bean 自动的和我们需要这个 bean 的类组装在一起</p>
 <p><code>@Qualifier</code>：</p>
 <p>通过yaml来给对象赋值：<code>@ConfigurationProperties(prefix = &quot;person&quot;)</code></p>
-<p>​    <code>prefix</code>：前缀</p>
-<p>​    将配置文件中的每一个值，映射到这个组件当中</p>
+<p>​	<code>prefix</code>：前缀</p>
+<p>​	将配置文件中的每一个值，映射到这个组件当中</p>
 <p>测试赋值结果</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Demo1ApplicationTests</span> &#123;<br>    <span class="hljs-meta">@Autowired</span><br>    Person p;<br>    <span class="hljs-meta">@Autowired</span><br>    Dog d;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">contextLoads</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(p);<br>        System.out.println(d);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -378,10 +378,10 @@
 <p>表示我们应该把文件建立在<code>templates</code>下</p>
 <p>thymeleaf文档：<code>https://fanlychie.github.io/post/thymeleaf.html</code></p>
 <p>取值交给前端静态页面的过程：</p>
-<p>​    这是Controller：</p>
+<p>​	这是Controller：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Controller</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestController</span> &#123;<br>    <span class="hljs-meta">@GetMapping(&quot;/test&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">test</span><span class="hljs-params">(Model model)</span>&#123;<br>        model.addAttribute(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;hello thymeleaf&quot;</span>);<span class="hljs-comment">//消息名，消息内容</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;test&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>​    这是test.html</p>
+<p>​	这是test.html</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span> <span class="hljs-attr">xmlns:th</span>=<span class="hljs-string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>首页<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>二级<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">th:text</span>=<span class="hljs-string">&quot;$&#123;msg&#125;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>//取出后端传来的值<br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="SpringMVC自动配置"><a href="#SpringMVC自动配置" class="headerlink" title="SpringMVC自动配置"></a><code>SpringMVC自动配置</code></h2><h3 id="官网链接："><a href="#官网链接：" class="headerlink" title="官网链接："></a>官网链接：</h3><p><code>https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-auto-configuration</code></p>
@@ -526,8 +526,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/">
-                        <span class="hidden-mobile">计算机网络-自顶向下</span>
+                      <a href="/2022/02/13/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
