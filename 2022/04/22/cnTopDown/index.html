@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1 应用层  1.1 架构  C&#x2F;S： 不对等架构  拓展性：差，要解决高并发，网络问题 可靠性：过度依赖服务器   P2P： 对等架构  管理困难：结点上线，下线不稳定   混合： 既有一个大服务器，同时又有每个节点，结点可以作为小服务器或者客户端  服务器：管理所有上线用户ip，分发给结点。 结点：向服务器请求目标ip，选择跟这个ip连接，同时向服务器注册自己的ip  混合架构就是C&#x2F;S里面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络-自顶向下">
+<meta property="og:url" content="http://example.com/2022/04/22/cnTopDown/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1 应用层  1.1 架构  C&#x2F;S： 不对等架构  拓展性：差，要解决高并发，网络问题 可靠性：过度依赖服务器   P2P： 对等架构  管理困难：结点上线，下线不稳定   混合： 既有一个大服务器，同时又有每个节点，结点可以作为小服务器或者客户端  服务器：管理所有上线用户ip，分发给结点。 结点：向服务器请求目标ip，选择跟这个ip连接，同时向服务器注册自己的ip  混合架构就是C&#x2F;S里面">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-22T08:07:42.480Z">
+<meta property="article:modified_time" content="2022-02-22T03:34:42.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>计算机网络-自顶向下 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机网络-自顶向下">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-22 16:07" pubdate>
+        April 22, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机网络-自顶向下</h1>
+            
+            <div class="markdown-body">
+              <h1 id="1-应用层"><a class="markdownIt-Anchor" href="#1-应用层"></a> 1 应用层</h1>
+<h2 id="11-架构"><a class="markdownIt-Anchor" href="#11-架构"></a> 1.1 架构</h2>
+<h3 id="cs"><a class="markdownIt-Anchor" href="#cs"></a> <code>C/S</code>：</h3>
+<p>不对等架构</p>
+<ul>
+<li>拓展性：差，要解决高并发，网络问题</li>
+<li>可靠性：过度依赖服务器</li>
+</ul>
+<h3 id="p2p"><a class="markdownIt-Anchor" href="#p2p"></a> <code>P2P</code>：</h3>
+<p>对等架构</p>
+<ul>
+<li>管理困难：结点上线，下线不稳定</li>
+</ul>
+<h3 id="混合"><a class="markdownIt-Anchor" href="#混合"></a> <code>混合</code>：</h3>
+<p>既有一个大服务器，同时又有每个节点，结点可以作为小服务器或者客户端</p>
+<ul>
+<li>服务器：管理所有上线用户<code>ip</code>，分发给结点。</li>
+<li>结点：向服务器请求目标<code>ip</code>，选择跟这个<code>ip</code>连接，同时向服务器注册自己的<code>ip</code></li>
+</ul>
+<p>混合架构就是<code>C/S</code>里面套接<code>P2P</code>，既有两者的优点，也将缺点小化了。</p>
+<h2 id="12-通信"><a class="markdownIt-Anchor" href="#12-通信"></a> 1.2 通信</h2>
+<ul>
+<li>
+<p>不同端系统之间的网络进程，依靠网络通信，遵守相关协议。</p>
+<p>任何一个用进程可以用端结点来标识，有一个<code>SAP</code>标识：</p>
+<ul>
+<li>主机<code>IP</code></li>
+<li><code>TCP/UDP</code></li>
+<li><code>port</code></li>
+</ul>
+<p>层间接口（稍底层），必须携带的信息：</p>
+<ul>
+<li>传输报文<code>SDU</code></li>
+<li>发送者：<code>IP+TCP/UDP+port</code></li>
+<li>接收者：<code>IP+TCP/UDP+port</code></li>
+</ul>
+<p><code>TCP Socket</code>：源IP+源Port+目标IP+目标Port。四元组。</p>
+<p>发送：</p>
+<ul>
+<li>TCP Socket+报文</li>
+</ul>
+<p><code>UDP Socket</code>：源IP+源Port。二元组</p>
+<p>发送：</p>
+<ul>
+<li>UDP Socket+报文+(目标IP+目标Port)</li>
+</ul>
+</li>
+<li>
+<p>同一端系统进程间通信，通过操作系统的：管道，消息队列，缓冲区等</p>
+</li>
+</ul>
+<p>协议：应用进程之间通信的约束（语法，语义，规则），只跟网络相关。</p>
+<p>应用实体：在某一层，和网络交互有关的，遵守协议的部分，叫做这一层的实体。在这个过程中需要实现协议的一些操作，是非实体。</p>
+<p>应用层需要传输层提供什么样的服务：</p>
+<ul>
+<li>数据丢失率</li>
+<li>延迟</li>
+<li>吞吐</li>
+<li>安全性
+<ul>
+<li>机密性</li>
+<li>完整性</li>
+<li>可认证性</li>
+</ul>
+</li>
+</ul>
+<h2 id="13-http"><a class="markdownIt-Anchor" href="#13-http"></a> 1.3 <code>HTTP</code></h2>
+<h3 id="web"><a class="markdownIt-Anchor" href="#web"></a> web</h3>
+<ul>
+<li>
+<p>web页：本身是对象，里面又嵌入了一些对象（的链接）</p>
+</li>
+<li>
+<p>URL：统一资源定位器</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs awk">Port:<span class="hljs-regexp">//u</span>ser:psw@www.xxx.edu<span class="hljs-regexp">/path/</span>pic.gif:port<br>协议名 用户 口令 主机名 路径 文件 端口<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>匿名访问：不需要口令</p>
+</li>
+<li>
+<p>HTTP默认端口：80</p>
+</li>
+<li>
+<p>FTP默认端口：21</p>
+</li>
+</ul>
+<h3 id="http概况"><a class="markdownIt-Anchor" href="#http概况"></a> HTTP概况</h3>
+<ul>
+<li>
+<p>跑在TCP上</p>
+</li>
+<li>
+<p>服务器客户端连接过程</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-number">1</span>.服务器有一个守候socket（<span class="hljs-keyword">waiting </span>socket）<span class="hljs-built_in">s1</span>，在服务器xxxip的<span class="hljs-number">80</span>端口，等待连接建立请求<br><span class="hljs-number">2</span>.web向服务器发送TCP请求，要求建立连接<br><span class="hljs-number">3</span>.服务器响应，允许建立连接，并返回一个socket <span class="hljs-built_in">s2</span>，代表web与server的会话关系<br><span class="hljs-number">4</span>.s1，<span class="hljs-built_in">s2</span>，<span class="hljs-built_in">s3</span>都守护在对应的<span class="hljs-number">80</span>端口，但<span class="hljs-built_in">s1</span>是守候socket，<span class="hljs-built_in">s2</span>，<span class="hljs-built_in">s3</span>是连接socket<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="非持久http10"><a class="markdownIt-Anchor" href="#非持久http10"></a> 非持久HTTP（1.0）</h3>
+<ul>
+<li>TCP连接–TCP确认</li>
+<li>HTTP请求–HTTP确认（返回对象，时间较长）</li>
+<li>TCP关闭–关闭</li>
+</ul>
+<h3 id="持久http11"><a class="markdownIt-Anchor" href="#持久http11"></a> 持久HTTP（1.1）</h3>
+<ul>
+<li>TCP请求–TCP确认</li>
+<li>HTTP请求–HTTP确认（返回对象）</li>
+<li>–等待，不关闭</li>
+</ul>
+<h3 id="响应时间模型"><a class="markdownIt-Anchor" href="#响应时间模型"></a> 响应时间模型</h3>
+<p>请求确认RTT：一次往返加小分组传输时间，因为分组字节数较小，所以通常忽略，只计算往返时间</p>
+<h4 id="非持久http"><a class="markdownIt-Anchor" href="#非持久http"></a> 非持久HTTP</h4>
+<ul>
+<li>TCP的RTT</li>
+<li>HTTP的RTT</li>
+<li>文件传输时间</li>
+<li>总时间：2RTT+文件传输时间</li>
+</ul>
+<p>在非持久HTTP中，一个对象的时间：2RTT+文件传输时间</p>
+<h4 id="持久http"><a class="markdownIt-Anchor" href="#持久http"></a> 持久HTTP</h4>
+<h5 id="非流水线http同步串行"><a class="markdownIt-Anchor" href="#非流水线http同步串行"></a> 非流水线HTTP（同步,串行）</h5>
+<ul>
+<li>TCP</li>
+<li>HTTP</li>
+<li>文件1</li>
+<li>文件2</li>
+</ul>
+<h5 id="流水线http异步并行"><a class="markdownIt-Anchor" href="#流水线http异步并行"></a> 流水线HTTP（异步，并行）</h5>
+<ul>
+<li>TCP</li>
+<li>HTTP</li>
+<li>文件1+文件2+…</li>
+</ul>
+<h3 id="http请求报文"><a class="markdownIt-Anchor" href="#http请求报文"></a> HTTP请求报文</h3>
+<ul>
+<li>两种报文：请求+响应</li>
+<li>ANCII码，人能阅读</li>
+<li>GET：server向服务器请求</li>
+<li>POST：上载</li>
+<li>HEAD：只要HTML的head，搜索引擎建立索引或者维护</li>
+</ul>
+<h3 id="http状态码"><a class="markdownIt-Anchor" href="#http状态码"></a> HTTP状态码：</h3>
+<p>​	常用：</p>
+<ul>
+<li>200：ok</li>
+<li>301：资源已被转移</li>
+<li>404：页面不存在</li>
+<li>500：内部服务器错误</li>
+</ul>
+<p>​    全部：</p>
+<table>
+<thead>
+<tr>
+<th>100</th>
+<th>Continue</th>
+<th>继续。<a target="_blank" rel="noopener" href="http://www.dreamdu.com/webbuild/client_vs_server/">客户端</a>应继续其请求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>Switching Protocols</td>
+<td>切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功。一般用于GET与POST请求</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>已创建。成功请求并创建了新的资源</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Accepted</td>
+<td>已接受。已经接受请求，但未处理完成</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Non-Authoritative Information</td>
+<td>非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content</td>
+<td>无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Reset Content</td>
+<td>重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Partial Content</td>
+<td>部分内容。服务器成功处理了部分GET请求</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>300</td>
+<td>Multiple Choices</td>
+<td>多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td>永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td>临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
+</tr>
+<tr>
+<td>303</td>
+<td>See Other</td>
+<td>查看其它地址。与301类似。使用GET和POST请求查看</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Use Proxy</td>
+<td>使用代理。所请求的资源必须通过代理访问</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Unused</td>
+<td>已经被废弃的HTTP状态码</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Temporary Redirect</td>
+<td>临时重定向。与302类似。使用GET请求重定向</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>客户端请求的语法错误，服务器无法理解</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>请求要求用户的身份认证</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Payment Required</td>
+<td>保留，将来使用</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>服务器理解请求客户端的请求，但是拒绝执行此请求</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置&quot;您所请求的资源无法找到&quot;的个性页面</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>客户端请求中的方法被禁止</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>服务器无法根据客户端请求的内容特性完成请求</td>
+</tr>
+<tr>
+<td>407</td>
+<td>Proxy Authentication Required</td>
+<td>请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权</td>
+</tr>
+<tr>
+<td>408</td>
+<td>Request Time-out</td>
+<td>服务器等待客户端发送的请求时间过长，超时</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
+<td>服务器完成客户端的 PUT 请求时可能返回此代码，服务器处理请求时发生了冲突</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone</td>
+<td>客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置</td>
+</tr>
+<tr>
+<td>411</td>
+<td>Length Required</td>
+<td>服务器无法处理客户端发送的不带Content-Length的请求信息</td>
+</tr>
+<tr>
+<td>412</td>
+<td>Precondition Failed</td>
+<td>客户端请求信息的先决条件错误</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Request Entity Too Large</td>
+<td>由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息</td>
+</tr>
+<tr>
+<td>414</td>
+<td>Request-URI Too Large</td>
+<td>请求的URI过长（URI通常为网址），服务器无法处理</td>
+</tr>
+<tr>
+<td>415</td>
+<td>Unsupported Media Type</td>
+<td>服务器无法处理请求附带的媒体格式</td>
+</tr>
+<tr>
+<td>416</td>
+<td>Requested range not satisfiable</td>
+<td>客户端请求的范围无效</td>
+</tr>
+<tr>
+<td>417</td>
+<td>Expectation Failed</td>
+<td>服务器无法满足Expect的请求头信息</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>服务器内部错误，无法完成请求</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Not Implemented</td>
+<td>服务器不支持请求的功能，无法完成请求</td>
+</tr>
+<tr>
+<td>502</td>
+<td>Bad Gateway</td>
+<td>作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Time-out</td>
+<td>充当网关或代理的服务器，未及时从远端服务器获取请求</td>
+</tr>
+<tr>
+<td>505</td>
+<td>HTTP Version not supported</td>
+<td>服务器不支持请求的HTTP协议的版本，无法完成处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cookie有状态的http"><a class="markdownIt-Anchor" href="#cookie有状态的http"></a> cookie，有状态的HTTP</h3>
+<ul>
+<li>client第一次访问server，HTTP报文中不携带cookie</li>
+<li>server给client分配cookie，保存到数据库，并在响应报文中返回cookie</li>
+<li>client接收到cookie，存入本地操作系统。</li>
+<li>client后续访问。请求报文中会携带本地的cookie</li>
+<li>server将接收到的cookie与数据库中的cookie对比，得到用户历史</li>
+</ul>
+<h3 id="web缓存代理服务器"><a class="markdownIt-Anchor" href="#web缓存代理服务器"></a> web缓存（代理服务器）</h3>
+<ul>
+<li>c向s发出HTTP请求，首先到代理服务器。</li>
+<li>代理服务器检查，没有发现对象，发送给origin server</li>
+<li>origin server给出响应，返回给代理，代理将对象保存</li>
+<li>代理返回对象给c</li>
+<li>c第二次向s请求相同的对象，经过代理服务器。</li>
+<li>代理服务器保有此对象，该对象被命中，代理返回对象给c</li>
+</ul>
+<p>优点：</p>
+<p>​	1.客户端快，请求响应时间短</p>
+<p>​	2.服务器端压力小，负载轻</p>
+<p>​	3.减小网络拥堵</p>
+<p>二八原则</p>
+<p>​	很小的缓存，但可以满足很多用户访问。</p>
+<h2 id="14-ftp"><a class="markdownIt-Anchor" href="#14-ftp"></a> 1.4 <code>FTP</code></h2>
+<ul>
+<li>c与s使用tcp，与21号端口建立连接</li>
+<li>c通过控制连接来获得身份确认</li>
+<li>c通过控制连接连续发送命令浏览目录</li>
+<li>收到文件传输命令时，s与c的20号端口进行数据连接（另外一个TCP连接）</li>
+<li>文件传输结束，s关闭连接</li>
+</ul>
+<p>控制连接21端口：发送命令</p>
+<p>数据连接20端口：传输数据</p>
+<h2 id="15-email"><a class="markdownIt-Anchor" href="#15-email"></a> 1.5 <code>Email</code></h2>
+<p>发送协议（push）：SMTP</p>
+<p>接收协议（pop）：HTTP，pop3，IMAP</p>
+<p>跑在TCP上</p>
+<ul>
+<li>用户代理：outlook，qqmail，发送给邮件服务器（SMTP）</li>
+<li>邮件服务器：运行在25号端口</li>
+<li>邮件服务器将接收的邮件放进队列里</li>
+<li>邮件服务器将邮件发送给其它邮件服务器，放在用户的邮箱里</li>
+<li>目标用户，使用用户代理将邮件从对应的邮件服务器的邮箱中取出来（pop3协议，HTTP，IMAP，60端口）</li>
+</ul>
+<h2 id="16-dns"><a class="markdownIt-Anchor" href="#16-dns"></a> 1.6 <code>DNS</code></h2>
+<p>域名解析系统：DNS是给其它应用应用的应用</p>
+<p>其它应用访问web，通过DNS这个基础设施，来成功访问到server。</p>
+<p>用户输入域名，DNS完成域名到ip地址的转换。</p>
+<p>分布式解析，区域DNS</p>
+<h3 id="dns的问题"><a class="markdownIt-Anchor" href="#dns的问题"></a> DNS的问题：</h3>
+<ul>
+<li>如何命名设备</li>
+<li>如何完成域名到ip地址的转化</li>
+<li>如何维护：增加域名/子域名，删除…</li>
+</ul>
+<h3 id="dns的思路"><a class="markdownIt-Anchor" href="#dns的思路"></a> DNS的思路：</h3>
+<ul>
+<li>分层的命名</li>
+<li>分布式的数据库</li>
+<li>UDP的53号端口</li>
+<li>是web的核心功能，但不在核心实现，在边缘实现。由此可见web最复杂的其实是边缘。</li>
+</ul>
+<h3 id="dns的功能"><a class="markdownIt-Anchor" href="#dns的功能"></a> DNS的功能：</h3>
+<ul>
+<li>主机名到IP的转换</li>
+<li>
+<ul>
+<li>主机别名到规范名字的转换</li>
+<li>邮件服务器别名到邮件服务器正规名字的转换</li>
+<li>负载均衡（多个子服务器提供服务），分治的思想。</li>
+</ul>
+</li>
+</ul>
+<h3 id="dns命名空间"><a class="markdownIt-Anchor" href="#dns命名空间"></a> DNS命名空间：</h3>
+<ul>
+<li>
+<ul>
+<li>国家：.cn	.us	.jp（国家的顶级域）</li>
+<li>通用：.com（很多公司的顶级域）  .edu  .gov</li>
+</ul>
+</li>
+<li>二级域</li>
+<li>三级域</li>
+<li>…</li>
+</ul>
+<p>DNS命名就是一个很多个个倒着生长的树，树根是顶级域，顶级域分为国家的和通用的。</p>
+<h3 id="dns根名字服务器"><a class="markdownIt-Anchor" href="#dns根名字服务器"></a> DNS根名字服务器：</h3>
+<p>13个名字服务器。查询的时候选择任何一个树根开始往下查阅，这样更稳定。</p>
+<h2 id="17-p2p"><a class="markdownIt-Anchor" href="#17-p2p"></a> 1.7 <code>P2P</code></h2>
+<h2 id="18-cdn"><a class="markdownIt-Anchor" href="#18-cdn"></a> 1.8 <code>CDN</code></h2>
+<h2 id="19-tcp"><a class="markdownIt-Anchor" href="#19-tcp"></a> 1.9 <code>TCP</code></h2>
+<p>可靠数据传输。</p>
+<ul>
+<li>流量控制：发送方不会淹没接收方</li>
+<li>拥塞控制：网络拥堵时抑制发送方</li>
+<li>不能提供的服务：时间保证，最小吞吐保证，安全性</li>
+<li>面向连接：要求C/S建立连接</li>
+</ul>
+<h2 id="110-udp"><a class="markdownIt-Anchor" href="#110-udp"></a> 1.10 <code>UDP</code></h2>
+<p>不可靠数据传输。</p>
+<ul>
+<li>不提供的服务：可靠，流量控制，拥塞控制，时间，带宽保证，建立连接</li>
+<li>优点：简单，延时低</li>
+</ul>
+<h2 id="111-ssl"><a class="markdownIt-Anchor" href="#111-ssl"></a> 1.11 <code>SSL</code></h2>
+<p>TCP/UDP都没有加密，都是明文传输。</p>
+<p>SSL建立在TCP上，提供加密的TCP连接</p>
+<p>SSL在应用层。</p>
+<ul>
+<li>私密性</li>
+<li>数据完整性</li>
+<li>端到端的鉴别（认证）</li>
+</ul>
+<p><code>https</code>开头的网站是跑在SSL协议上，再往下是TCP，是安全的</p>
+<p><code>http</code>则跑在TCP上，明文传输，不安全</p>
+<h1 id="2传输层"><a class="markdownIt-Anchor" href="#2传输层"></a> 2.传输层</h1>
+<h2 id="21-多路复用解复用"><a class="markdownIt-Anchor" href="#21-多路复用解复用"></a> 2.1 多路复用解复用</h2>
+<p>​	传输层向应用层提供服务；网络层向传输层提供服务。传输层和应用层是进程–进程（或是线程）通信。网络层则是端系统–端系统通信。</p>
+<p>​	多个应用程序把socket+报文（+目标&lt;ip,port&gt;二元组）向下交给传输层。传输层在报文前面加上源port，目标port的段，形成传输层的TCP字节流或者是UDP数据报。传输层再向下交给ip层，ip层在报文前面加上源ip，目标ip，形成ip数据报。再统一向下交，将多个ip数据报发出。–复用</p>
+<p>​	经过网络核心到接收端，再依次向上交。一方面丢掉头部的ip，port信息，得到message；另一方面根据ip，port找到对应的进程。–解复用</p>
+<h2 id="22-udp"><a class="markdownIt-Anchor" href="#22-udp"></a> 2.2 UDP</h2>
+<p>​	UDP是不可靠传输，但它在ip的基础上，优化了：进程–进程；差错检验功能。</p>
+<p>​	差错检验，注意溢出回卷还有取反码部分。</p>
+<h2 id="23-rdt"><a class="markdownIt-Anchor" href="#23-rdt"></a> 2.3 RDT</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/22/leetcode/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">leetcode每日一题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/22/SpringBoot/">
+                        <span class="hidden-mobile">SpringBoot</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>
